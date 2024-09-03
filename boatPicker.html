@@ -1,0 +1,27 @@
+<template>
+    <lightning-card title="Boat Browser">
+        <div  class="slds-var-p-horizontal_medium">
+            <div class="slds-var-m-bottom_medium">
+                <lightning-record-picker
+                label="Browse our inventory"
+                placeholder="Search by boat name or type" 
+                object-api-name="Boat__c"
+                display-info={displayInfo}
+                matching-info={matchingInfo}
+                onchange={handleChange}
+                >
+            </lightning-record-picker>
+            </div>
+            <div lwc:if={showBoat}>
+                <div class="tile slds-var-m-vertical_medium" >
+                    <div style={backgroundStyle} class="tile"></div>
+                </div>
+                <div class="slds-text-heading_medium slds-border_bottom slds-var-m-bottom_medium">{boatName}</div>
+                <div>Captain: {boatOwner}</div>
+                <p>Price: <lightning-formatted-number maximum-fraction-digits="0" value={boatPrice} format-style="currency" currency-code="USD"></lightning-formatted-number></p>
+                <div>Type: {boatType}</div>
+            </div>
+        </div>
+         
+    </lightning-card>
+</template>
